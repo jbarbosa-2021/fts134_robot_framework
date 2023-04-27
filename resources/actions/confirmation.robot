@@ -1,9 +1,11 @@
 *** Settings ***
-Documentation    mapeamento das acoes da pagina de confirmacao
+Documentation    Mapeamento das acoes da pagina de confirmacao
+Library          SeleniumLibrary
 
 *** Keywords ***
 Validar a mensagem de agradecimento "${mensagem}"
-    element should contain  xpath = //h1                               ${mensagem}
+    wait until element is visible   xpath = //h1        30
+    element should contain          xpath = //h1                       ${mensagem}
 
 Validar o id da passagem "${id}"
     element should contain  css = tr:nth-child(1) > td:nth-child(2)    ${id}
@@ -12,6 +14,7 @@ Validar o status da passagem "${status}"
     element should contain  css = tr:nth-child(2) > td:nth-child(2)    ${status}
 
 Validar o preco da passagem "${preco}"
+    wait until element is enabled   css = tr:nth-child(3) > td:nth-child(2)     30
     element should contain  css = tr:nth-child(3) > td:nth-child(2)    ${preco}
 
 Validar os ultimos 4 digitos do cartao "${final_cartao}"

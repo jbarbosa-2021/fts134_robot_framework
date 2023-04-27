@@ -1,9 +1,16 @@
 *** Settings ***
-Documentation       Suite description
+Documentation   Suite description
+Library         SeleniumLibrary
 
 *** Keywords ***
 Selecionar o primeiro voo da lista
-    click button    class = btn.btn-small
+    wait until element is enabled   class = btn.btn-small  30
+    click button                    class = btn.btn-small
 
 Selecionar o voo numero "${num}"
-    click button    css = tr:nth-child(${num}) .btn
+    wait until element is enabled   css = tr:nth-child(${num}) .btn  30
+    click button                    css = tr:nth-child(${num}) .btn
+
+Validar o titulo de origem e destino
+    [Arguments] ${otigem}   ${destino}
+    element should contain  xpath = //h3    Fights from ${otigem} to ${destino}:

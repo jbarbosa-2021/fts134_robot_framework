@@ -1,9 +1,8 @@
 *** Settings ***
 Library     SeleniumLibrary
-Library     Browser
 Library     OperatingSystem
 
-Resource    actions/confirmation.,robot
+Resource    actions/confirmation.robot
 Resource    actions/header.robot
 Resource    actions/index.robot
 Resource    actions/purchase.robot
